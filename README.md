@@ -1,3 +1,7 @@
+<p align="center">
+  <img title="logo" src='https://github.com/Alexzionx/lampa_chat-client/blob/master/assets/images/logo.png?raw=true' />
+</p>
+
 # LampaChat client
 
 - [Ru](https://github.com/Alexzionx/lampa_chat-client/blob/main/readmeRU.md)|En
@@ -9,7 +13,9 @@
 ## Getting started
   LampaChat server requires **Java 8** or latest
   ```
-  java -jar LampaChat_server.jar
+  java -jar LampaChat_client.jar
   ```
   After start firts time you need change **server Adress and Ports**
-  
+  <p align="center">
+  <img title="gui" src='https://github.com/Alexzionx/lampa_chat-client/blob/master/assets/images/gui.png?raw=true' />
+</p>
