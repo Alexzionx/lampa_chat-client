@@ -4,7 +4,7 @@
 
 # LampaChat client
 
-- Ru|[En](https://github.com/Alexzionx/lampa_chat-client/blob/main/README.md)
+- Ru|[En](https://github.com/Alexzionx/lampa_chat-client/blob/master/README.md)
 
 **LampaChat** это простой текстовый мессенджер для размещения на своем собственном сервере, с регистрацией и базой данных (sqlite3).
 
