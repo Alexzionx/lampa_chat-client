@@ -20,3 +20,15 @@
   <img title="gui" src='https://github.com/Alexzionx/lampa_chat-client/blob/master/assets/images/gui.png?raw=true' />
 </p>
 
+# Публичный сервер
+   server adress - **45.141.103.116**
+   
+   port1 - **30305**
+   
+   port2 - **30306**
+  
+  - ### Демо пользователь
+    
+    login - **demo1**
+    
+    pass - **demo**
