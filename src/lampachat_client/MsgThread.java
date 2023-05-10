@@ -13,7 +13,7 @@ public class MsgThread implements Runnable {
     private Thread self;
     private JHome frame;
     private Message message;
-    private database database = new database();
+    private Database database = new Database();
     private String userName;
 
     public MsgThread(JHome frame) {
@@ -34,7 +34,7 @@ public class MsgThread implements Runnable {
             try {
                 System.out.println("TRY MsgThread");
                 //Message message = new Message();
-                //db database = new database();
+                //db Database = new Database();
 
                 userName = database.ReadLogin();
                 ArrayList<String> friends = new ArrayList<>();
@@ -83,7 +83,7 @@ public class MsgThread implements Runnable {
                         } else {
                             System.out.println("if 2 " + from);
                             if (!friends.contains(from)) {
-                                //if (database.r) {
+                                //if (Database.r) {
                                 //дублируется изза медленного обнолвения списка друзейы
                                 database.addContact(from);
                                 friends.add(from);

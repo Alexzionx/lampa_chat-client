@@ -36,7 +36,7 @@ public class JRegistration extends javax.swing.JFrame {
         System.out.println("Jregist > singUP()");
         String res = message.sendServiceSingUp(login, password);
         if (res.equals("You are registered!\n\nPlease RESTART app!")) {
-            database database = new database();
+            Database database = new Database();
             database.setLoginAndPass(login, password);
             new JInfoWindow(home).setText(res);
             return true;

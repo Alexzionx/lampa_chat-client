@@ -15,11 +15,11 @@ public class MsgInWindow implements Runnable {
 
     @Override
     public void run() {
-        database db = new database();
+        Database db = new Database();
         while (JHome.contact == userID) {
             System.out.print("");
             while (form.msgCount <= db.ReadMessageCount(userID)) {
-                //String s=database.Read(userID);
+                //String s=Database.Read(userID);
                 String s[] = db.ReadiDl(userID, JHome.msgCount);
                 form.msgIN(s);
                 JHome.msgCount++;

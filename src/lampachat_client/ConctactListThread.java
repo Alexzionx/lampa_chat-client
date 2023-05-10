@@ -15,7 +15,7 @@ public class ConctactListThread implements Runnable {
 
     @Override
     public void run() {
-        database db = new database();
+        Database db = new Database();
         while (true) {
             System.out.print("");
             if (JHome.contactLIstCount < db.ReadContactCount()) {

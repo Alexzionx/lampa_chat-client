@@ -14,7 +14,7 @@ public class LampaChat_client {
         opt.createDirectoryStructure();
         opt.readOptions();
 
-        database database = new database();
+        Database database = new Database();
         database.checkDB();
         JHome home = new JHome();
         home.setEnabled(true);

@@ -37,7 +37,7 @@ public class JFindFriends extends javax.swing.JFrame {
     }
 
     public void setContactList(ArrayList<String> list) {
-        database database = new database();
+        Database database = new Database();
         int friendCount = database.ReadContactCount();
         for (int i = 1; i <= friendCount; i++) {
             list.remove(database.ReadContactList(i));
@@ -171,7 +171,7 @@ public class JFindFriends extends javax.swing.JFrame {
         Message message = new Message();
         String s = message.sendServiceMessage(name, "add Contact");
         if (s.equals("Contact added")) {
-            database database = new database();
+            Database database = new Database();
             database.addContact(name);
             this.dispose();
         } else {

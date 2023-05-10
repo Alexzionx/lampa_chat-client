@@ -244,7 +244,7 @@ public class JProfile extends javax.swing.JFrame {
                 }
                 if (trig) {
                     if (message.sendServiceMessage(pass, "setPassword").equals("ok")) {
-                        database database = new database();
+                        Database database = new Database();
                         database.setLoginAndPass(home.getUserName(), pass);
                         new JInfoWindow(home).setText("Your password has been changed successfully.\nPlease RESTART app!");
                     } else {

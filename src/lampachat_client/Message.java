@@ -11,7 +11,7 @@ import protocol.Protocol_v1;
 
 public class Message {
 
-    private database database = new database();
+    private Database database = new Database();
 
     public Message() {
         System.out.println("Message >Message()- IP-" + Options.getServer_adress() + " Port_1-" + Options.getPort1() + " Port_2-" + Options.getPort2());

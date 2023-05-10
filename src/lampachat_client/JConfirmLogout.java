@@ -99,7 +99,7 @@ public class JConfirmLogout extends javax.swing.JFrame {
     private void jButtonYesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYesMouseClicked
         // TODO add your handling code here:
         System.out.println("Button YES");
-        database database = new database();
+        Database database = new Database();
         database.deletefile();
         new JInfoWindow(home).setText("You are logout!\nAll user files is deleted!\n\nPlease RESTART app!");
     }//GEN-LAST:event_jButtonYesMouseClicked

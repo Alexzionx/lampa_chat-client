@@ -49,7 +49,7 @@ public class JHome extends javax.swing.JFrame {
     }
 
     public boolean checkLogin() {
-        database database = new database();
+        Database database = new Database();
         userName = database.ReadLogin();
         if (userName == null) {
             return false;
@@ -303,8 +303,8 @@ public class JHome extends javax.swing.JFrame {
 
     private void JMenuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemLogoutActionPerformed
         // TODO add your handling code here:
-        /*database database = new database();
-        database.deletefile();
+        /*Database Database = new Database();
+        Database.deletefile();
         JMenuItemLogin.setVisible(true);
         JMenuItemLogout.setVisible(false);
         new JInfoWindow(this).setText("You are logout!\nAll user files is deleted!\n\nPlease RESTART app!");
