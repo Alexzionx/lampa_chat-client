@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MsgThread implements Runnable {
 
@@ -94,13 +96,13 @@ public class MsgThread implements Runnable {
                     }
                 }
             } catch (IOException | ClassNotFoundException e) {
-                System.out.println(e);
+            Logger.getLogger(MsgThread.class.getName()).log(Level.INFO, e.getMessage());
                 frame.setStatus(false);
             }
             try {
                 Thread.sleep(20000);
             } catch (InterruptedException ex) {
-                System.out.println(ex);
+            Logger.getLogger(MsgThread.class.getName()).log(Level.INFO, ex.getMessage());
             }
         }
     }

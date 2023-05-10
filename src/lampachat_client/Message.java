@@ -33,9 +33,8 @@ public class Message {
             System.out.println("Message >sendMessege()> 2");
             writer.writeObject(newMessage);
             Thread.sleep(1000);
-        } catch (IOException ex) {
-            System.out.println(ex);
-        } catch (InterruptedException ex) {
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(Message.class.getName()).log(Level.INFO, ex.getMessage());
         }
         System.out.println("Message >sendMessege()> Done");
         return true;
@@ -72,10 +71,8 @@ public class Message {
                     System.out.println(mas.getMessage());
                     return false;
             }
-        } catch (IOException ex) {
-            System.out.println("Message > sendServiceLogin()>" + ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Message > sendServiceLogin()>" + ex);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Message.class.getName()).log(Level.INFO, ex.getMessage());
         }
         return true;
     }
@@ -95,10 +92,8 @@ public class Message {
             } else {
                 return mas.getMessage();
             }
-        } catch (IOException ex) {
-            System.out.println("Message > sendServiceSingUp()>" + ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Message > sendServiceSingUp()>" + ex);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Message.class.getName()).log(Level.INFO, ex.getMessage());
         }
         System.out.println("Message > sendServiceSingUp() -END");
         return null;
@@ -115,10 +110,8 @@ public class Message {
             writer.writeObject(newMessage);
             Protocol_v1 mas = (Protocol_v1) reader.readObject();
             return mas.getMessage();
-        } catch (IOException ex) {
-            System.out.println("Message > sendServiceMessage()>" + ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Message > sendServiceMessage()>" + ex);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Message.class.getName()).log(Level.INFO, ex.getMessage());
         }
         return null;
     }

@@ -1,5 +1,8 @@
 package lampachat_client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class MsgInWindow implements Runnable {
 
     private Thread self;
@@ -28,6 +31,8 @@ public class MsgInWindow implements Runnable {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
+                Logger.getLogger(MsgInWindow.class.getName()).log(Level.INFO, ex.getMessage());
+
             }
         }
     }

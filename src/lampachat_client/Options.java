@@ -46,11 +46,13 @@ public class Options {
             System.out.println("-++------sound_notifications-" + sound_notifications);
             System.out.println("-++------lang-" + lang);
         } catch (FileNotFoundException ex) {
-            System.out.println("Config file \"config/options.properties\" not found!");
-            System.out.println("Creating default config file!");
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, "Config file \"config/options.properties\" not found!");
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, "Creating default config file!");
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, ex.getMessage());
             setDefaultConfigFile();
         } catch (IOException ex) {
-            System.out.println(ex);
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, ex.getMessage());
+
         }
     }
 
@@ -75,14 +77,14 @@ public class Options {
             Files.createDirectory(Paths.get(baseFolder));
         } catch (FileAlreadyExistsException ex) {
         } catch (IOException ex) {
-            System.out.println("Error " + ex);
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, ex.getMessage());
         }
         try {
             String configFolder = "config";
             Files.createDirectory(Paths.get(configFolder));
         } catch (FileAlreadyExistsException ex) {
         } catch (IOException ex) {
-            System.out.println("Error " + ex);
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, ex.getMessage());
         }
     }
 
@@ -102,7 +104,7 @@ public class Options {
             writer.write(str);
             writer.close();
         } catch (IOException ex) {
-            System.out.println("ERROR creating default config file! ");
+            Logger.getLogger(Options.class.getName()).log(Level.INFO, ex.getMessage());
         }
     }
 

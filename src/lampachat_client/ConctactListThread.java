@@ -1,6 +1,8 @@
 package lampachat_client;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConctactListThread implements Runnable {
 
@@ -29,7 +31,8 @@ public class ConctactListThread implements Runnable {
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(ConctactListThread.class.getName()).log(Level.INFO, ex.getMessage());
+
             }
         }
     }

@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database extends org.sqlite.JDBC {
 
@@ -23,7 +25,7 @@ public class Database extends org.sqlite.JDBC {
         try {
             conn = DriverManager.getConnection(DATABASE_FILESQL);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return conn;
     }
@@ -44,7 +46,7 @@ public class Database extends org.sqlite.JDBC {
         try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
         } catch (SQLException e) {
-            System.out.println("->createNewTableMessages(" + table + ")-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, "->createNewTableMessages(" + table + ")-" + e.getMessage());
         }
     }
 
@@ -59,7 +61,7 @@ public class Database extends org.sqlite.JDBC {
             stmt.execute(sql);
             stmt.execute(sql2);
         } catch (SQLException e) {
-            System.out.println("->createNewTableContacts-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
     }
 
@@ -69,7 +71,7 @@ public class Database extends org.sqlite.JDBC {
         try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             stmt.execute(s);
         } catch (SQLException e) {
-            System.out.println("->createNewTableIdentification-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
     }
 
@@ -83,7 +85,7 @@ public class Database extends org.sqlite.JDBC {
             pstmt.setString(4, time);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
     }
 
@@ -102,7 +104,7 @@ public class Database extends org.sqlite.JDBC {
             createNewTableMessages(contact);
             System.out.println("done");
         } catch (SQLException e) {
-            System.out.println("->addContact-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
 
     }
@@ -121,8 +123,7 @@ public class Database extends org.sqlite.JDBC {
                 System.out.printf("%s. %s - %s \n", from_user, to_user, message);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return s2;
     }
@@ -139,8 +140,7 @@ public class Database extends org.sqlite.JDBC {
             s2 = s2 + from_user + to_user + message;
             System.out.printf("%s. %s - %s \n", from_user, to_user, message);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return s2;
     }
@@ -158,7 +158,7 @@ public class Database extends org.sqlite.JDBC {
             return new String[]{from_user, to_user, message, time};
             //System.out.printf("%s. %s - %s \n", from_user, to_user, message);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return s2;
     }
@@ -174,7 +174,7 @@ public class Database extends org.sqlite.JDBC {
                 s2 = username;
             }
         } catch (SQLException e) {
-            System.out.println("->ReadContactList-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return s2;
     }
@@ -190,13 +190,13 @@ public class Database extends org.sqlite.JDBC {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            System.out.println("->ReadContactCount-" + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return 0;
     }
 
     public int ReadMessageCount(String table) {
-        System.out.println("->ReadMessageCount("+table+")");
+        System.out.println("->ReadMessageCount(" + table + ")");
         String s = "SELECT max(id) FROM " + table;
         try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(s);
@@ -204,7 +204,7 @@ public class Database extends org.sqlite.JDBC {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            System.out.println("->ReadMessageCount("+table+")-"+e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, "->ReadMessageCount(" + table + ")-" + e.getMessage());
         }
         return 0;
     }
@@ -216,7 +216,7 @@ public class Database extends org.sqlite.JDBC {
             ResultSet rs = stmt.executeQuery(s);
             return rs.getString(1);
         } catch (SQLException e) {
-            System.out.println("->ReadLogin Error - " + e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
             return null;
         }
     }
@@ -228,7 +228,7 @@ public class Database extends org.sqlite.JDBC {
             ResultSet rs = stmt.executeQuery(s);
             return rs.getString(1);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
         return null;
     }
@@ -240,7 +240,7 @@ public class Database extends org.sqlite.JDBC {
         try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             stmt.execute(s);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
     }
 
@@ -256,7 +256,7 @@ public class Database extends org.sqlite.JDBC {
             stmt.execute(s2);
             stmt.execute(s3);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
         }
     }
 
@@ -270,9 +270,8 @@ public class Database extends org.sqlite.JDBC {
         try {
             Class.forName(DRIVER_NAME);
             return true;
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("->driverStatus is fall");
+        } catch (ClassNotFoundException e) {
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, "->driverStatus is fall" + e.getMessage());
             return false;
         }
     }
@@ -297,7 +296,7 @@ public class Database extends org.sqlite.JDBC {
                 findString += "\n";
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
             findString = e.getMessage();
         }
         return findString;
@@ -324,7 +323,7 @@ public class Database extends org.sqlite.JDBC {
                 findString += "\n";
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
             findString = e.getMessage();
         }
         return findString;
@@ -350,7 +349,7 @@ public class Database extends org.sqlite.JDBC {
                 findString += "\n";
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, e.getMessage());
             findString = e.getMessage();
         }
         return findString;
@@ -372,7 +371,7 @@ public class Database extends org.sqlite.JDBC {
             //return rs.getString(1);
             stmt.execute(s);
         } catch (SQLException e) {
-            System.out.println("create new database file");
+            Logger.getLogger(Database.class.getName()).log(Level.INFO, "create new database file" + e.getMessage());
             deletefile();
         }
     }
